@@ -16,6 +16,7 @@ public class UsersDTO {
     private String username;
     private String password;
     private String role;
+    private Long telegramId;
 
     public UsersDTO(Users user) {
 
@@ -23,5 +24,6 @@ public class UsersDTO {
         setUsername(user.getUsername());
         setPassword(user.getPassword());
         setRole(user.getRole());
+        setTelegramId(user.getTelegramId());
     }
 }

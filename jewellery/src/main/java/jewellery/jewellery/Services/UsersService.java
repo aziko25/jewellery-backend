@@ -38,6 +38,11 @@ public class UsersService {
 
             user.setRole(userDTO.getRole());
 
+            if (userDTO.getTelegramId() != null) {
+
+                user.setTelegramId(userDTO.getTelegramId());
+            }
+
             usersRepository.save(user);
 
             return "You Successfully Created User!";
@@ -73,13 +78,18 @@ public class UsersService {
                 user.setRole(userDTO.getRole());
             }
 
+            if (userDTO.getTelegramId() != null) {
+
+                user.setTelegramId(userDTO.getTelegramId());
+            }
+
             usersRepository.save(user);
 
             return "You Successfully Updated User!";
         }
         catch (DataIntegrityViolationException exception) {
 
-            throw new IllegalArgumentException("This Username Already Exists!");
+            throw new IllegalArgumentException("This Username Or Telegram ID Already Exists!");
         }
     }
 

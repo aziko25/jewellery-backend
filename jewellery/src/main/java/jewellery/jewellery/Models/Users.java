@@ -23,4 +23,7 @@ public class Users {
 
     private String password;
     private String role;
+
+    @Column(unique = true)
+    private Long telegramId;
 }

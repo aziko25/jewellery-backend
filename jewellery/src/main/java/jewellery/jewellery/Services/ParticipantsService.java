@@ -38,9 +38,9 @@ public class ParticipantsService {
         SendMessage message = new SendMessage();
 
         message.setChatId("-4111201490");
-        message.setText("A new participant has registered:\n------------------------------------\n\nFull Name: "
-                + participant.getFullName() + "\nEmail: " + participant.getEmail() + "\nPhone: "
-                + participant.getPhone() + "\nMessage: " + participant.getMessage());
+        message.setText("A new participant has registered:\n--------------------------------\n\nFull Name: "
+                + participant.getFullName() + "\nEmail: " + participant.getEmail()
+                + "\nMessage: " + participant.getMessage());
 
         telegramBot.sendMessage(message);
 
