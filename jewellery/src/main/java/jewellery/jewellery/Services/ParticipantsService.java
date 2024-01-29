@@ -38,7 +38,7 @@ public class ParticipantsService {
         SendMessage message = new SendMessage();
 
         message.setChatId("-1001991811481");
-        message.setText("A new participant has registered:\n--------------------------------\n\nFull Name: "
+        message.setText("New Message Received:\n--------------------------------\n\nFull Name: "
                 + participant.getFullName() + "\nEmail: " + participant.getEmail()
                 + "\nMessage: " + participant.getMessage());
 
