@@ -18,7 +18,6 @@ public class ParticipantsDTO {
     private Long id;
     private String fullName;
     private String email;
-    private String phone;
     private String message;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
@@ -29,7 +28,6 @@ public class ParticipantsDTO {
         setId(participant.getId());
         setFullName(participant.getFullName());
         setEmail(participant.getEmail());
-        setPhone(participant.getPhone());
         setMessage(participant.getMessage());
     }
 }

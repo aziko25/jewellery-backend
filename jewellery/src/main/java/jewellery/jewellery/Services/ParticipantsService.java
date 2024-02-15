@@ -31,7 +31,6 @@ public class ParticipantsService {
 
         participant.setFullName(participantsDTO.getFullName());
         participant.setEmail(participantsDTO.getEmail());
-        participant.setPhone(participantsDTO.getPhone());
         participant.setMessage(participantsDTO.getMessage());
         participant.setCreationTime(LocalDateTime.now());
 
@@ -55,10 +54,6 @@ public class ParticipantsService {
 
         if (participantsDTO.getEmail() != null) {
             participant.setEmail(participantsDTO.getEmail());
-        }
-
-        if (participantsDTO.getPhone() != null) {
-            participant.setPhone(participantsDTO.getPhone());
         }
 
         if (participantsDTO.getFullName() != null) {
