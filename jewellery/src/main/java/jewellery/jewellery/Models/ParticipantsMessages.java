@@ -14,21 +14,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "signed_up_participants")
-public class Participants {
+@Table(name = "participants")
+public class ParticipantsMessages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userType;
-    private String email;
     private String fullName;
-    private String country;
-    private String organization;
-    private Float space;
-    private String spaceSubtitle;
+    private String email;
+    private String phone;
+    private String message;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime registrationTime;
+    private LocalDateTime creationTime;
 }
