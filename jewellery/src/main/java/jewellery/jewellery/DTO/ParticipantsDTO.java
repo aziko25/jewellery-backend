@@ -1,7 +1,7 @@
 package jewellery.jewellery.DTO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jewellery.jewellery.Models.Participants;
+import jewellery.jewellery.Models.ParticipantsMessages;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class ParticipantsDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime creationTime;
 
-    public ParticipantsDTO(Participants participant) {
+    public ParticipantsDTO(ParticipantsMessages participant) {
 
         setId(participant.getId());
         setFullName(participant.getFullName());

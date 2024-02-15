@@ -1,8 +1,8 @@
 package jewellery.jewellery;
 
-import jewellery.jewellery.Models.Participants;
+import jewellery.jewellery.Models.ParticipantsMessages;
 import jewellery.jewellery.Models.Users;
-import jewellery.jewellery.Repositories.ParticipantsRepository;
+import jewellery.jewellery.Repositories.ParticipantsMessagesRepository;
 import jewellery.jewellery.Repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
@@ -17,10 +17,10 @@ import java.util.List;
 @Component
 public class MainTelegramBot extends TelegramLongPollingBot {
 
-    private final ParticipantsRepository repository;
+    private final ParticipantsMessagesRepository repository;
     private final UsersRepository usersRepository;
 
-    public MainTelegramBot(@Value("${bot.token}") String botToken, ParticipantsRepository repository, UsersRepository usersRepository) {
+    public MainTelegramBot(@Value("${bot.token}") String botToken, ParticipantsMessagesRepository repository, UsersRepository usersRepository) {
 
         super(botToken);
         this.repository = repository;
@@ -42,12 +42,12 @@ public class MainTelegramBot extends TelegramLongPollingBot {
 
                 if (user != null) {
 
-                    List<Participants> participants = repository.findAll(Sort.by("creationTime"));
+                    List<ParticipantsMessages> participants = repository.findAll(Sort.by("creationTime"));
 
                     StringBuilder response = new StringBuilder();
                     int count = 0;
 
-                    for (Participants participant : participants) {
+                    for (ParticipantsMessages participant : participants) {
 
                         response.append("\n\nEmail: ").append(participant.getEmail())
                                 .append("\nFull Name: ").append(participant.getFullName())

@@ -2,8 +2,8 @@ package jewellery.jewellery.Services;
 
 import jewellery.jewellery.DTO.ParticipantsDTO;
 import jewellery.jewellery.MainTelegramBot;
-import jewellery.jewellery.Models.Participants;
-import jewellery.jewellery.Repositories.ParticipantsRepository;
+import jewellery.jewellery.Models.ParticipantsMessages;
+import jewellery.jewellery.Repositories.ParticipantsMessagesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -14,18 +14,20 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static jewellery.jewellery.Utils.StaticVariables.TG_GROUP_ID;
+
 @Service
 @RequiredArgsConstructor
 public class ParticipantsService {
     
-    private final ParticipantsRepository participantsRepository;
+    private final ParticipantsMessagesRepository participantsRepository;
     private final MainTelegramBot telegramBot;
 
     //------------------------------------CRUD-----------------------------------------//
 
     public String participantRegistration(ParticipantsDTO participantsDTO) {
 
-        Participants participant = new Participants();
+        ParticipantsMessages participant = new ParticipantsMessages();
 
         participant.setFullName(participantsDTO.getFullName());
         participant.setEmail(participantsDTO.getEmail());
@@ -37,7 +39,7 @@ public class ParticipantsService {
 
         SendMessage message = new SendMessage();
 
-        message.setChatId("-1001991811481");
+        message.setChatId(TG_GROUP_ID);
         message.setText("New Message Received:\n--------------------------------\n\nFull Name: "
                 + participant.getFullName() + "\nEmail: " + participant.getEmail()
                 + "\nMessage: " + participant.getMessage());
@@ -49,7 +51,7 @@ public class ParticipantsService {
 
     public String updateParticipant(Long id, ParticipantsDTO participantsDTO) {
 
-        Participants participant = participantsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
+        ParticipantsMessages participant = participantsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
 
         if (participantsDTO.getEmail() != null) {
             participant.setEmail(participantsDTO.getEmail());
@@ -74,7 +76,7 @@ public class ParticipantsService {
 
     public String deleteParticipant(Long id) {
 
-        Participants participant = participantsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
+        ParticipantsMessages participant = participantsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User Not Found!"));
 
         participantsRepository.delete(participant);
 
