@@ -46,7 +46,8 @@ public class SignupController {
     public ResponseEntity<Resource> fetchFile(@PathVariable String fileName) {
 
         // Construct the full path to the file
-        Resource resource = new FileSystemResource(fileName);
+        String fullPath = DOCUMENTS_SAVING_DIR + "/" + fileName;
+        Resource resource = new FileSystemResource(fullPath);
 
         if (!resource.exists() || !resource.isReadable()) {
             throw new IllegalArgumentException("Error: File not found or not readable");
@@ -121,7 +122,7 @@ public class SignupController {
 
             Path filePath = Paths.get(directoryPath, fullFilename);
 
-            participants.setDocLink(directoryPath + "/" + fullFilename);
+            participants.setDocLink(fullFilename);
 
             try {
                 file.transferTo(filePath);
