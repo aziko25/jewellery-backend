@@ -23,11 +23,13 @@ public class Participants {
 
     private String userType;
     private String email;
+    private String phone;
     private String fullName;
     private String country;
     private String organization;
     private Float space;
     private String spaceSubtitle;
+    private String docLink;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime registrationTime;
