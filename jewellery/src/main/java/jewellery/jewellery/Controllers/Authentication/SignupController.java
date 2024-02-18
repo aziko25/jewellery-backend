@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -47,8 +46,7 @@ public class SignupController {
     public ResponseEntity<Resource> fetchFile(@PathVariable String fileName) {
 
         // Construct the full path to the file
-        String fullPath = DOCUMENTS_SAVING_DIR + "/" + fileName;
-        Resource resource = new FileSystemResource(fullPath);
+        Resource resource = new FileSystemResource(fileName);
 
         if (!resource.exists() || !resource.isReadable()) {
             throw new IllegalArgumentException("Error: File not found or not readable");
@@ -132,9 +130,8 @@ public class SignupController {
             }
 
             participants.setSpace(participant.getSpace());
-            participants.setSpaceSubtitle(participant.getSpaceSubtitle());
 
-            String extension = "\nSpace: " + participant.getSpace() + "\nSpace Subtitle: " + participant.getSpaceSubtitle();
+            String extension = "\nSpace: " + participant.getSpace();
 
             String originalFilename = file.getOriginalFilename();
 
