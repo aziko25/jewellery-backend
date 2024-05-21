@@ -9,6 +9,7 @@ import org.springframework.core.io.Resource;
 
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 @Configuration
 public class FirestoreConfig {
@@ -19,9 +20,8 @@ public class FirestoreConfig {
     public void initialize() {
 
         try {
-
             Resource resource = new ClassPathResource("carato-shopping-app-firebase-adminsdk-mm14l-9e0ac1c77a.json");
-            FileInputStream serviceAccount = new FileInputStream(resource.getFile());
+            InputStream serviceAccount = resource.getInputStream();
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -29,9 +29,7 @@ public class FirestoreConfig {
                     .build();
 
             FirebaseApp.initializeApp(options);
-        }
-        catch (Exception e) {
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
