@@ -21,5 +21,6 @@ public class Orders {
     private String comment;
     private long orderDate;
     private String status;
+    private Boolean isPaymentDone;
     private List<Products> products;
 }

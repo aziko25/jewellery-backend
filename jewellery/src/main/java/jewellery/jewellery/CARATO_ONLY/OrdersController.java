@@ -88,6 +88,7 @@ public class OrdersController {
         Orders order = service.getOrderById(orderId);
 
         order.setStatus("Paid");
+        order.setIsPaymentDone(true);
 
         Firestore firebaseDatabase = FirestoreClient.getFirestore();
         DocumentReference documentReference = firebaseDatabase.collection(ordersTableCollection).document(orderId);

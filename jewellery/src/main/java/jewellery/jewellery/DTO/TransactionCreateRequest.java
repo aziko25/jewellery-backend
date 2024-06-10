@@ -13,5 +13,4 @@ public class TransactionCreateRequest {
 
     private Integer orderId;
     private Double orderTotalSum;
-    private String returnUrl;
 }

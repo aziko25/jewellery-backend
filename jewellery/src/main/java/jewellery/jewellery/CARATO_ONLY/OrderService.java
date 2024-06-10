@@ -30,13 +30,6 @@ public class OrderService {
         if (document.exists()) {
 
             order = document.toObject(Orders.class);
-
-            assert order != null;
-            order.setStatus("Paid");
-
-            ApiFuture<WriteResult> writeResult = documentReference.set(order);
-
-            writeResult.get();
         }
         else {
 
