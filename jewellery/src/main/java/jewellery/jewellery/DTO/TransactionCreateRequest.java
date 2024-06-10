@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TransactionCreateRequest {
 
-    private Integer orderId;
+    private String orderId;
     private Double orderTotalSum;
 }
