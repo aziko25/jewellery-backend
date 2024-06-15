@@ -27,7 +27,8 @@ public class OrdersController {
     @PostMapping("/createTransaction")
     public ResponseEntity<?> createTransaction(@RequestBody TransactionCreateRequest request) {
 
-        String url = "https://my.click.uz/services/pay?service_id=30196&merchant_id=22689&" +
+        String url = "https://my.click.uz/services/pay?service_id=30196&merchant_id=22689" +
+                "&return_url=" + request.getReturnUrl() +
                 "&amount=" + request.getOrderTotalSum() +
                 "&transaction_param=" + request.getOrderId();
 
