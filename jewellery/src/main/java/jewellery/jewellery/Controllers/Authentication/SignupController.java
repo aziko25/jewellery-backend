@@ -136,7 +136,7 @@ public class SignupController {
 
             String originalFilename = file.getOriginalFilename();
 
-            if (originalFilename != null && (originalFilename.endsWith(".pdf") || originalFilename.endsWith(".docx") || originalFilename.endsWith(".word"))) {
+            if (originalFilename != null && (originalFilename.toLowerCase().endsWith(".pdf") || originalFilename.toLowerCase().endsWith(".docx") || originalFilename.toLowerCase().endsWith(".word"))) {
 
                 String tempDirectoryPath = System.getProperty("java.io.tmpdir");
                 Path tempFilePath = Paths.get(tempDirectoryPath, fullFilename);
